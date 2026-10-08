@@ -19,13 +19,17 @@
 ## 📦 Структура проекта
 
 AQA_Maven_Tasks/
-├── README.md # Этот файл
+│
+├── README.md
+│
 ├── GeometryApp/ # Отдельное приложение (демонстрация)
 │ ├── pom.xml
-│ └── src/main/java/com/example/App.java
+│ └── src/main/java/com/example/
+│ └── App.java
 │
 └── GeometryProject/ # Multi-module проект
 ├── pom.xml # Родительский POM
+│
 ├── GeometryLibrary/ # Модуль 1: 2D фигуры (v1.1.0)
 │ ├── pom.xml
 │ ── src/main/java/com/example/
@@ -35,15 +39,14 @@ AQA_Maven_Tasks/
 │
 ├── GeometryUtils/ # Модуль 2: Утилиты (v1.1.0-SNAPSHOT)
 │ ├── pom.xml
-│ └── src/main/java/com/example/
+│ ── src/main/java/com/example/
 │ └── GeometryUtils.java # Конвертация, сравнение фигур
 │
 └── ThreeDimensionalShapes/ # Модуль 3: 3D фигуры (v1.0.0-SNAPSHOT)
 ├── pom.xml
 └── src/main/java/com/example/
-├── Cube.java # Куб
+├── Cube.java # Куб (объём, площадь поверхности)
 └── Sphere.java # Сфера
-
 
 ## 🚀 Как запустить
 
@@ -59,16 +62,22 @@ mvn clean install
 
 3. Открой GeometryApp отдельно:
 File → Open → выбери папку GeometryApp
+
 Обнови зависимости в pom.xml GeometryApp (нажми на иконку Maven 🐘)
+
 Запусти App.java (зеленая стрелочка ▶️)
 
 ### Вариант B: Запуск через командную строку
+
 1. Собери GeometryProject:
+   ```bash
    cd GeometryProject
    mvn clean install
 
 2. Запусти GeometryApp:
+   ```bash
    cd ../GeometryApp
+   
    mvn clean compile exec:java -Dexec.mainClass="com.example.App"
 
 ## Пример Вывода:
@@ -93,18 +102,33 @@ Sphere [radius=5.0, volume=523.60, surfaceArea=314.16]
 ### 📚 Выполненные задания
 
 ✅ Задание 1: Создание библиотеки
-Создан проект GeometryLibrary с классами для геометрических фигур
-Каждая фигура имеет методы getArea() и getPerimeter()
+
+- Создан проект GeometryLibrary с классами для геометрических фигур
+
+- Каждая фигура имеет методы getArea() и getPerimeter()
+
 ✅ Задание 2: Создание приложения
-Создан проект GeometryApp, использующий библиотеку
-Демонстрация работы с объектами фигур
+
+- Создан проект GeometryApp, использующий библиотеку
+
+- Демонстрация работы с объектами фигур
+
 ✅ Задание 3: Управление версиями
-Версия библиотеки обновлена: 1.0.0 → 1.1.0
-Добавлен новый метод getDiameter() в класс Circle
-Обновлена зависимость в приложении
+
+- Версия библиотеки обновлена: 1.0.0 → 1.1.0
+
+- Добавлен новый метод getDiameter() в класс Circle
+
+- Обновлена зависимость в приложении
+
 ✅ Задание 4: Multi-module проект и SNAPSHOT
-Создан родительский проект GeometryProject с тремя модулями
-Модуль GeometryUtils (утилиты) — версия 1.0.0-SNAPSHOT → 1.1.0-SNAPSHOT
-Модуль ThreeDimensionalShapes (3D фигуры) — версия 1.0.0-SNAPSHOT
-Подключение всех модулей к приложению GeometryApp
-Решение конфликтов зависимостей при обновлении версий
+
+- Создан родительский проект GeometryProject с тремя модулями
+
+- Модуль GeometryUtils (утилиты) — версия 1.0.0-SNAPSHOT → 1.1.0-SNAPSHOT
+
+- Модуль ThreeDimensionalShapes (3D фигуры) — версия 1.0.0-SNAPSHOT
+
+- Подключение всех модулей к приложению GeometryApp
+
+- Решение конфликтов зависимостей при обновлении версий
