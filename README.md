@@ -63,9 +63,9 @@ mvn clean install
 3. Открой GeometryApp отдельно:
 File → Open → выбери папку GeometryApp
 
-Обнови зависимости в pom.xml GeometryApp (нажми на иконку Maven 🐘)
+> Обнови зависимости в pom.xml GeometryApp (нажми на иконку Maven 🐘)
 
-Запусти App.java (зеленая стрелочка ▶️)
+> Запусти App.java (зеленая стрелочка ▶️)
 
 ### Вариант B: Запуск через командную строку
 
