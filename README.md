@@ -16,69 +16,53 @@
 - **IntelliJ IDEA**
 - **Git & GitHub**
 
+---
+
 ## 📦 Структура проекта
 
-AQA_Maven_Tasks/
-│
-├── README.md
-│
-├── GeometryApp/ # Отдельное приложение (демонстрация)
-│ ├── pom.xml
-│ └── src/main/java/com/example/
-│ └── App.java
-│
-└── GeometryProject/ # Multi-module проект
-├── pom.xml # Родительский POM
-│
-├── GeometryLibrary/ # Модуль 1: 2D фигуры (v1.1.0)
-│ ├── pom.xml
-│ ── src/main/java/com/example/
-│ ├── Circle.java # Круг (площадь, периметр, диаметр)
-│ ├── Rectangle.java # Прямоугольник
-│ └── Triangle.java # Треугольник (формула Герона)
-│
-├── GeometryUtils/ # Модуль 2: Утилиты (v1.1.0-SNAPSHOT)
-│ ├── pom.xml
-│ ── src/main/java/com/example/
-│ └── GeometryUtils.java # Конвертация, сравнение фигур
-│
-└── ThreeDimensionalShapes/ # Модуль 3: 3D фигуры (v1.0.0-SNAPSHOT)
-├── pom.xml
-└── src/main/java/com/example/
-├── Cube.java # Куб (объём, площадь поверхности)
-└── Sphere.java # Сфера
+Решение состоит из двух независимых частей:
+
+### 1. `GeometryProject` (Multi-module библиотека)
+Родительский проект, объединяющий три модуля:
+* **`GeometryLibrary`** (v1.1.0) — базовые 2D фигуры: `Circle`, `Rectangle`, `Triangle`.
+* **`GeometryUtils`** (v1.1.0-SNAPSHOT) — вспомогательные утилиты: конвертация единиц измерения, сравнение площадей.
+* **`ThreeDimensionalShapes`** (v1.0.0-SNAPSHOT) — 3D фигуры: `Cube`, `Sphere`.
+
+### 2. `GeometryApp` (Демонстрационное приложение)
+Отдельный проект, который выступает в роли потребителя:
+* Подключает все три модуля из `GeometryProject` как зависимости.
+* Содержит класс `App.java` с методом `main`, который создает объекты фигур и выводит расчеты в консоль.
+
+---
 
 ## 🚀 Как запустить
 
 ### Вариант A: Запуск через IntelliJ IDEA
 
-1. **Открой GeometryProject:**
-   ```bash
-   git clone https://github.com/esprakta/maven-geometry-project.git
-   cd maven-geometry-project/GeometryProject
+### Способ 1: Через IntelliJ IDEA
 
-2. Собрать проект
-mvn clean install
+1. Склонируй репозиторий:  
+   `git clone https://github.com/esprakta/maven-geometry-aqa.git`
+2. Открой папку `GeometryProject` в IDEA как проект (`File` → `Open`).
+3. Открой терминал в IDEA и собери библиотеки:  
+   `mvn clean install`
+4. Открой папку `GeometryApp` в IDEA в **новом окне**.
+5. Обнови зависимости Maven (нажми на иконку 🐘 в правом верхнем углу).
+6. Запусти класс `App.java` (зеленая стрелка ▶️ рядом с `main`).
 
-3. Открой GeometryApp отдельно:
-File → Open → выбери папку GeometryApp
+### Способ 2: Через командную строку
 
-> Обнови зависимости в pom.xml GeometryApp (нажми на иконку Maven 🐘)
+1. Собираем и устанавливаем модули в локальный репозиторий
 
-> Запусти App.java (зеленая стрелочка ▶️)
+`cd GeometryProject`
 
-### Вариант B: Запуск через командную строку
+`mvn clean install`
 
-1. Собери GeometryProject:
-   ```bash
-   cd GeometryProject
-   mvn clean install
+3. Переходим в приложение и запускаем его
 
-2. Запусти GeometryApp:
-   ```bash
-   cd ../GeometryApp
-   
-   mvn clean compile exec:java -Dexec.mainClass="com.example.App"
+`cd ../GeometryApp`
+
+`mvn clean compile exec:java -Dexec.mainClass="com.example.App"`
 
 ## Пример Вывода:
 
